@@ -1,0 +1,16 @@
+.divClass {
+    height: 100%;
+    width: 200px;
+    font-family: montserrat;
+    border: 1px solid grey;
+    padding: 20px 5px 30px;
+    margin: 10px auto;
+}
+
+.divClass h1{
+    margin-bottom: 0px;
+}
+
+.divClass h4{
+    margin-top: 0px;
+}
