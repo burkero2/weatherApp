@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import styles from "./css/weatherComponent.module.css"
-// import PostsAPI from "./PostsAPI"
-import WeatherAPI from "./WeatherAPI"
+import PostsAPI from "./PostsAPI"
+// import WeatherAPIJS from "./WeatherAPIJS"
+import WeatherAPIReact from "./WeatherAPIReact"
 
 // weather_API_Key: de6d47fc7be0ea7b9cdbf02731da6db8
 
@@ -51,10 +52,11 @@ export class WeatherComponent extends Component {
 
                 this.state.currentTime + " "}
                 {this.state.meridian < 12 ? " pm" : " am"}</h4>
-                <WeatherAPI />
+                <WeatherAPIReact />
+                {/* <WeatherAPIJS/> */}
                 </div>
                 
-                {/* <PostsAPI /> */}
+                <PostsAPI />
             </div>
         )
     }
