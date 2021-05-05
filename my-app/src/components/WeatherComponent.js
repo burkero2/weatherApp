@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import styles from "./css/weatherComponent.module.css"
-import PostsAPI from "./PostsAPI"
+// import PostsAPI from "./PostsAPI"
 // import WeatherAPIJS from "./WeatherAPIJS"
 import WeatherAPIReact from "./WeatherAPIReact"
 
@@ -55,8 +55,6 @@ export class WeatherComponent extends Component {
                 <WeatherAPIReact />
                 {/* <WeatherAPIJS/> */}
                 </div>
-                
-                <PostsAPI />
             </div>
         )
     }

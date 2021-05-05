@@ -1,5 +1,13 @@
 .App {
   text-align: center;
+  height: 100%;
+  width: 18%;
+  font-family: montserrat;
+  border: 2px solid #e6ecf0;
+  padding: 20px 5px 30px;
+  margin: 10px auto;
+  background-color: white;
+  color: #4a4a4f;
 }
 
 .App-logo {

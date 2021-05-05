@@ -1,28 +1,57 @@
-import React, { useState, useEffect } from 'react'
+import React, {useState, useEffect} from 'react'
+import axios from 'axios';
 import styles from "./css/weatherComponent.module.css"
 
 function WeatherComponentHooks() {
-    const today = new Date();
-    const [time, setTime] = useState('');
-    const [day, setDay] = useState(0);
+    const [data, setData] = useState([]);
+    //Why am I not using error here?
+    const [error, setError] = useState('');
+    // const [weatherIcon, setWeatherIcon] = useState('');
+    const [description, setDescription] = useState('description');
+    
+    useEffect(() => APIQuery(data),[]);
 
-    useEffect(() => {
-        const interval = setInterval(() => {
-            console.log("Interval executed");
-            setTime((time) => today.getHours() + ':' + today.getMinutes() + ':' + today.getSeconds());
-          }, 1000);
+    function APIQuery(data){
+        console.log("it works");
+        const API_KEY = "de6d47fc7be0ea7b9cdbf02731da6db8";
+        const API_URL = "https://api.openweathermap.org/data/2.5/weather";
+        const cityName = "Dublin";
+        const queryString = `${API_URL}?q=${cityName}&appid=${API_KEY}`;
+
+        axios.get(queryString)
+            .then((response) => {
+                console.log("response: ", response);
+                setData(response);
+                console.log("data: ", data);
+                displayStatus(data);
+            }).catch((error) => {
+                setError(error.message)
+            });
+        }
+        // Is the .catch part working?
+    
+
+        // useEffect(() => chooseWeather());
         
-    },[]);
- 
+        function displayStatus(info){
+            console.log("displayStatus: ", info.data.weather[0].description);
+            // why does my code stop working if I add more lines after this? Or sometimes it stops, sometimes it works
+
+           
+            setDescription(info.data.weather[0].description);
+            // console.log("hello");
+            // console.log("description: ", description);
+
+
+        }
+    
+
+
     return (
-        <div>
-             <div className = {styles.divClass}>
-                <h5>React Component</h5>
-                <h2>Time is {time}</h2>
-                <button onClick={()=>setDay(day+1)}>Click</button>
+        <div className = {styles.divClass}>
+            <img src = "https://codeinstitute.s3.amazonaws.com/Instructional%20Design/weatherIcons/poo-storm-solid.svg" />
                 <br></br>
-                {day}
-            </div>
+            <h4>{description}</h4>
         </div>
     )
 }
